@@ -6,19 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
   <title>GoFuel</title>
 </head>
 <body>
+
   <h1 class="text-center">GoFuel</h1>
   <div class="mx-auto text-center">
-    <h5>This is a H3 tag</h5>
+    <h5>Fuel Price in 80210</h5>
+    <p id="nearestStation"></p>
     <div class="row">
-      <p class="col-6 ">This is a p tag on the left</p>
-      <p class="col-6">This is a p tag on the right</p>
+      <p class="col-6 mx-auto" id="regularDisplay">Regular: </p>
+      <p class="col-6 mx-auto" id="dieselDisplay">Diesel: </p>
+    </div>
     </div>
   </div>
+
+  <!-- Mapbox Div -->
+  <section id="mapbox-container">
+    <div class="mx-auto" id='map'></div>
+  </section>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
   <script src="/assets/js/keys.js"></script>
   <script src="/assets//js/script.js"></script>
+  <script>
+
+  </script>
 </body>
 </html>

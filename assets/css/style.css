@@ -1,5 +1,6 @@
 *{
   background-color: #e1d7c7;
+  font-family: monospace;
 }
 
 main {
@@ -18,26 +19,6 @@ main {
     color: #f7f8ed;
     background-color: #7da11a;
   }
-
-
-main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    height: 86vh;
-  
-  }
-
-  nav{
-    background-color: #7da11a;
-  }
-
-  #unico{
-    color: #f7f8ed;
-    background-color: #7da11a;
-  }
-
   
 .square {
     background-color: #f7f8ed;
@@ -45,6 +26,7 @@ main {
     height: 550px;
     border-radius: 3%;
    
+
   }
 
   h4{
@@ -71,6 +53,16 @@ main {
 
     }
 
+    @media  screen and (max-width: 900px){
+
+      .square{
+        width:750px;
+        height: 500px;
+      background-color: olive;
+    }
+
+}
+
     @media  screen and (max-width: 850px){
 
       .square{
@@ -79,15 +71,18 @@ main {
       background-color: olive;
     }
 
+}
 
-  }
-      
+    @media  screen and (max-width: 800px){
+
+      .square{
+        width:650px;
+        height: 500px;
+      background-color: olive;
+}
 
 }
-      
-      
-   
-      @media screen and (max-width: 750px) {
+    @media screen and (max-width: 750px) {
           
         .square{
             width:600px;
@@ -96,41 +91,75 @@ main {
         }
       }
 
+      @media  screen and (max-width: 700px){
+
+        .square{
+          width:550px;
+          height: 500px;
+        background-color: olive;
+      }
+  
+  }
+
       @media only screen and (max-width: 650px) {
           
        .square{
             width:500px;
-            height: 600px;
+            height: 500px;
           background-color: olive;
         }
       }
-
-      @media only screen and (max-width: 500px) {
-          
-        
+      @media  screen and (max-width: 600px){
 
         .square{
+          width:450px;
+          height: 500px;
+        background-color: olive;
+      }
+  
+  }
+
+
+      @media only screen and (max-width: 550px) {
+          
+        
+        
+        .square{
             width:400px;
-            height: 600px;
+            height: 500px;
           background-color: olive;
         }
       } 
 
-      @media only screen and (max-width: 400px) {
-          
+      @media  screen and (max-width: 500px){
 
         .square{
-            width:300px;
-            height: 500px;
+          width:350px;
+          height: 500px;
+        background-color: olive;
+      }
+  
+  }
+
+      @media only screen and (max-width: 400px) {
+          
+        
+        
+        
+        .square{
+            width:250px;
+            height: 450px;
           background-color: olive;
         }
       } 
 
       @media only screen and (max-width: 300px) {
           
-
+        
+        
+        
         .square{
-            width:200px;
+            width: 250px;
             height: 400px;
           background-color: olive;
         }

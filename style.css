@@ -1,0 +1,76 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 86vh;
+  }
+.square {
+    background-color: #2ecc71;
+    width: 800px;
+    height: 550px;
+   
+
+  }
+
+  h4{
+      text-align: center;
+      
+    }
+
+    @media screen and (max-width: 840px) {
+        
+        main{
+            height:77vh;
+        }
+        
+        
+        .square{
+            width:95%;
+            height: 85%;
+          background-color: olive;
+        }
+
+    }
+
+      @media only screen and (max-width: 700px) {
+          
+        main{
+            height:77vh;
+        }
+        
+        
+        .square{
+            width:85%;
+            height: 75%;
+          background-color: olive;
+        }
+      }
+
+      @media only screen and (max-width: 600px) {
+          
+        main{
+            height:77vh;
+        }
+        
+        
+        .square{
+            width:75%;
+            height: 65%;
+          background-color: olive;
+        }
+      }
+
+      @media only screen and (max-width: 500px) {
+          
+        main{
+            height:77vh;
+        }
+        
+        
+        .square{
+            width:65%;
+            height: 55%;
+          background-color: olive;
+        }
+      } 

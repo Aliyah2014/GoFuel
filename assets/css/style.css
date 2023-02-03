@@ -18,6 +18,26 @@ main {
     color: #f7f8ed;
     background-color: #7da11a;
   }
+
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 86vh;
+  
+  }
+
+  nav{
+    background-color: #7da11a;
+  }
+
+  #unico{
+    color: #f7f8ed;
+    background-color: #7da11a;
+  }
+
   
 .square {
     background-color: #f7f8ed;
@@ -25,7 +45,6 @@ main {
     height: 550px;
     border-radius: 3%;
    
-
   }
 
   h4{
@@ -60,11 +79,14 @@ main {
       background-color: olive;
     }
 
+
+  }
+      
+
 }
       
       
-    
-
+   
       @media screen and (max-width: 750px) {
           
         .square{
@@ -86,7 +108,7 @@ main {
       @media only screen and (max-width: 500px) {
           
         
-        
+
         .square{
             width:400px;
             height: 600px;
@@ -96,9 +118,7 @@ main {
 
       @media only screen and (max-width: 400px) {
           
-        
-        
-        
+
         .square{
             width:300px;
             height: 500px;
@@ -108,9 +128,7 @@ main {
 
       @media only screen and (max-width: 300px) {
           
-        
-        
-        
+
         .square{
             width:200px;
             height: 400px;

@@ -1,10 +1,51 @@
-// API call to NERL
+// DOM variables
+var nearestStation = $('#nearestStation');
+var regularDisplay = $('#regularDisplay');
+var dieselDisplay = $('#dieselDisplay');
+
+// Fuel Price Generator Function
+var regular = 3;
+var diesel = 4;
+var randomCentsOne =  Math.floor(Math.random() * (999 - 001 + 1) + 001);
+var randomCentsTwo =  Math.floor(Math.random() * (999 - 001 + 1) + 001);
+
+function generateRegularPrice() {
+  return `$${regular}.${randomCentsOne}`;
+};
+
+function generateDieselPrice() {
+  return `$${diesel}.${randomCentsTwo}`;
+};
+
+// API call to NERL fuel
 var userPostalCode = '80210';
-var API_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=2&api_key=${API_KEY}`;
+var NERL_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=2&api_key=${NERL_KEY}`;
 
 $.ajax({
-  url: API_URL,
+  url: NERL_URL,
   method: "GET"
 }).then(function(response) {
   console.log(response);
+  var stationName = response.fuel_stations[0].station_name;
+  var stationAdd = response.fuel_stations[0].street_address;
+  var stationZip = response.fuel_stations[0].zip;
+  var stationNum = response.fuel_stations[0].station_phone;
+
+  nearestStation.append(`${stationName}${stationAdd} ${stationZip}  ${stationNum}`);
+  regularDisplay.append(generateRegularPrice());
+  dieselDisplay.append(generateDieselPrice());
+});
+
+// MAPBOX
+mapboxgl.accessToken = MAPBOX_KEY;
+
+var map = new mapboxgl.Map({
+  container: 'map', // container ID
+  style: 'mapbox://styles/mapbox/streets-v12', // style URL
+  center: [-104.95121, 39.66758], // starting position [lng, lat]
+  zoom: 12, // starting zoom
+});
+
+map.on('load', function () {
+  map.resize();
 });

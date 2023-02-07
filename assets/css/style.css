@@ -19,6 +19,9 @@ main {
     background-color: #7da11a;
   }
 
+#navList{
+  list-style: none; 
+}
 
 main {
     display: flex;
@@ -43,8 +46,7 @@ main {
     background-color: #f7f8ed;
     width: 800px;
     height: 550px;
-    border-radius: 3%;
-   
+    border-radius: 3%; 
   }
 
   h4{
@@ -58,8 +60,32 @@ main {
 
     .text-footer{
       color: #f7f8ed;
-    } 
+    }
 
+    /* Article page styling */
+    .article{
+      margin: auto;
+      
+    }
+    .heading{
+      font-size: 30px;
+      font-weight: bolder;
+    }
+
+    .content{
+      font-size: 20px;
+    }
+
+    #carimg {
+      width: 700px; 
+    }
+
+    a:link { text-decoration: none; }
+    a:visited { text-decoration: none; }
+    a:hover { text-decoration: none; }
+    a:active { text-decoration: none; }
+
+    /* Article page styling End */
     @media screen and (max-width: 950px) {
         
         

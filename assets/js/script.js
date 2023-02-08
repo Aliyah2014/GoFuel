@@ -3,25 +3,28 @@ var fuelCard = $('#fuelCard');
 var zipCodeInput = $('#zip-code-input');
 var submitZipCode = $('#submit-zip-code');
 
-
-// Fuel Price Generator Function
+// Fuel price variables and price calculator
 var regular = 3;
 var diesel = 4;
 var randomCentsOne =  Math.floor(Math.random() * (999 - 001 + 1) + 001);
 var randomCentsTwo =  Math.floor(Math.random() * (999 - 001 + 1) + 001);
 
+// Function that randomises price when called in loop
 function randomisePrice(price) {
   return Math.floor(Math.random() * price + 1);
 }
 
+// Function that generates a random price for Regular
 function generateRegularPrice() {
   return `${regular}.${randomisePrice(randomCentsOne)}`;
 };
 
+// Function that generates a random price for Diesel
 function generateDieselPrice() {
   return `$${diesel}.${randomisePrice(randomCentsTwo)}`;
 };
 
+// API call to NREL for Fuel Station Data
 submitZipCode.click(function() {
   var userPostalCode = zipCodeInput.val();
   var NERL_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=5&api_key=${NERL_KEY}`;
@@ -49,7 +52,7 @@ submitZipCode.click(function() {
   });
 });
 
-// MAPBOX
+// Mapbox Integration
 mapboxgl.accessToken = MAPBOX_KEY;
 
 var map = new mapboxgl.Map({

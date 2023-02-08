@@ -19,6 +19,7 @@ function generateDieselPrice() {
   return `$${diesel}.${randomCentsTwo}`;
 };
 
+//Zip code click handler
 submitZipCode.click(function() {
   var userPostalCode = zipCodeInput.val();
   var NERL_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=2&api_key=${NERL_KEY}`;
@@ -74,3 +75,8 @@ xhr.setRequestHeader("authorization", "apikey 7MWEgB0tzpb27NRZrCuH4X:2Rbnr0TJ15X
 
 xhr.send(data);
 
+//Function to store input data in local storage
+var input = document.getElementById('saveServer').value;
+localStorage.setItem('server', input);
+
+document.getElementById('saveServer').value = localStorage.getItem('server');

@@ -1,5 +1,9 @@
 // DOM variables
+
 var fuelCard = $('#fuelCard');
+var zipCodeInput = $('#zip-code-input');
+var submitZipCode = $('#submit-zip-code');
+
 
 // Fuel Price Generator Function
 var regular = 3;
@@ -18,6 +22,10 @@ function generateRegularPrice() {
 function generateDieselPrice() {
   return `$${diesel}.${randomisePrice(randomCentsTwo)}`;
 };
+
+submitZipCode.click(function() {
+  var userPostalCode = zipCodeInput.val();
+  var NERL_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=2&api_key=${NERL_KEY}`;
 
 // API call to NERL fuel
 var userPostalCode = '80210';
@@ -76,12 +84,3 @@ map.on('load', function () {
 // xhr.setRequestHeader("authorization", "apikey 7MWEgB0tzpb27NRZrCuH4X:2Rbnr0TJ15XIVbS9igb95Y");
 
 // xhr.send(data);
-
-// API autocomplete for search bar
-// var apikey = 'HERE-e77eb534-79d2-43c3-aa17-373893adb761'
-
-// https://autocomplete.geocoder.ls.hereapi.com/6.2/suggest.json
-// ?apiKey={'HERE-e77eb534-79d2-43c3-aa17-373893adb761'}
-// &query=Pariser+1+Berl
-// &beginHighlight=<b>
-// &endHighlight=</b>

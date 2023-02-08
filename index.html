@@ -24,26 +24,28 @@
   <!-- End Of Navbar -->
 
   <!--Search bar for userInput-->
-  <div class="search-wrapper">
-    <label for="search">Search</label>
-    <input type="search" id="search">
-  </div>
 
   <!-- Mapbox API -->
   <main>
-    <section id="mapbox-container">
-      <div class="square">
-        <div class="mx-auto" id='map'></div>
-      </div>
+    <section>
+        <div>
+          <input type="search" id="search-bar" class="form-control" placeholder="Enter your ZIP Code e.g. 80210" />
+        </div>
     </section>
 
-    <section>
-      <div class="mx-auto text-center">
-        <h5>Fuel Price in 80210</h5>
-        <p id="nearestStation"></p>
-        <div class="row">
-          <p class="col-6 mx-auto" id="regularDisplay">Regular: </p>
-          <p class="col-6 mx-auto" id="dieselDisplay">Diesel: </p>
+    <div class="search-wrapper">
+      <label for="search">Search</label>
+      <input type="search" id="search">
+      <input type="text" id="zip-code-input">
+      <button id="submit-zip-code">Go</button>
+    </div>
+
+    <section id="map-area">
+      <div class="row">
+        <div class="col-8" id="map"></div>
+        <div class="col-4" id="stations">
+          <!-- Added via jQuery in script.js -->
+          <div id="fuelCard"></div>
         </div>
       </div>
     </section>

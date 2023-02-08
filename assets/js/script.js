@@ -1,7 +1,5 @@
 // DOM variables
-var nearestStation = $('#nearestStation');
-var regularDisplay = $('#regularDisplay');
-var dieselDisplay = $('#dieselDisplay');
+var fuelCard = $('#fuelCard');
 
 // Fuel Price Generator Function
 var regular = 3;
@@ -9,31 +7,42 @@ var diesel = 4;
 var randomCentsOne =  Math.floor(Math.random() * (999 - 001 + 1) + 001);
 var randomCentsTwo =  Math.floor(Math.random() * (999 - 001 + 1) + 001);
 
+function randomisePrice(price) {
+  return Math.floor(Math.random() * price + 1);
+}
+
 function generateRegularPrice() {
-  return `$${regular}.${randomCentsOne}`;
+  return `${regular}.${randomisePrice(randomCentsOne)}`;
 };
 
 function generateDieselPrice() {
-  return `$${diesel}.${randomCentsTwo}`;
+  return `$${diesel}.${randomisePrice(randomCentsTwo)}`;
 };
 
 // API call to NERL fuel
 var userPostalCode = '80210';
-var NERL_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=2&api_key=${NERL_KEY}`;
+var NERL_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=5&api_key=${NERL_KEY}`;
 
 $.ajax({
   url: NERL_URL,
   method: "GET"
 }).then(function(response) {
   console.log(response);
-  var stationName = response.fuel_stations[0].station_name;
-  var stationAdd = response.fuel_stations[0].street_address;
-  var stationZip = response.fuel_stations[0].zip;
-  var stationNum = response.fuel_stations[0].station_phone;
+  for (var i = 0; i < response.fuel_stations.length; i++) {
+    var stationName = response.fuel_stations[i].station_name;
+    var stationAdd = response.fuel_stations[i].street_address;
+    var stationZip = response.fuel_stations[i].zip;
 
-  nearestStation.append(`${stationName}${stationAdd} ${stationZip}  ${stationNum}`);
-  regularDisplay.append(generateRegularPrice());
-  dieselDisplay.append(generateDieselPrice());
+    var fuelCardBody = $(`
+                        <div class="fuelCard">
+                          <p>${stationName}</p>
+                          <p>${stationAdd}, ${stationZip}</p>
+                          <p>Regular: $${generateRegularPrice()} - Diesel: ${generateDieselPrice()}</p>
+                        </div>
+                      `);
+
+    fuelCard.append(fuelCardBody);
+  };
 });
 
 // MAPBOX
@@ -50,23 +59,23 @@ map.on('load', function () {
   map.resize();
 });
 
-// API call to get USA Gas prices
-var data = null;
+// // API call to get USA Gas prices
+// var data = null;
 
-var xhr = new XMLHttpRequest();
-xhr.withCredentials = false;
+// var xhr = new XMLHttpRequest();
+// xhr.withCredentials = false;
 
-xhr.addEventListener("readystatechange", function () {
-  if (this.readyState === this.DONE) {
-    console.log(this.responseText);
-  }
-});
+// xhr.addEventListener("readystatechange", function () {
+//   if (this.readyState === this.DONE) {
+//     console.log(this.responseText);
+//   }
+// });
 
-xhr.open("GET", "https://api.collectapi.com/gasPrice/stateUsaPrice?state=WA");
-xhr.setRequestHeader("content-type", "application/json");
-xhr.setRequestHeader("authorization", "apikey 7MWEgB0tzpb27NRZrCuH4X:2Rbnr0TJ15XIVbS9igb95Y");
+// xhr.open("GET", "https://api.collectapi.com/gasPrice/stateUsaPrice?state=WA");
+// xhr.setRequestHeader("content-type", "application/json");
+// xhr.setRequestHeader("authorization", "apikey 7MWEgB0tzpb27NRZrCuH4X:2Rbnr0TJ15XIVbS9igb95Y");
 
-xhr.send(data);
+// xhr.send(data);
 
 // API autocomplete for search bar
 // var apikey = 'HERE-e77eb534-79d2-43c3-aa17-373893adb761'

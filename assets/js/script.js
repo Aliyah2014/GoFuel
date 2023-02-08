@@ -54,7 +54,7 @@ map.on('load', function () {
 var data = null;
 
 var xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
+xhr.withCredentials = false;
 
 xhr.addEventListener("readystatechange", function () {
   if (this.readyState === this.DONE) {

@@ -49,3 +49,21 @@ var map = new mapboxgl.Map({
 map.on('load', function () {
   map.resize();
 });
+
+// API call to get USA Gas prices
+var data = null;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === this.DONE) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "https://api.collectapi.com/gasPrice/stateUsaPrice?state=WA");
+xhr.setRequestHeader("content-type", "application/json");
+xhr.setRequestHeader("authorization", "apikey 7MWEgB0tzpb27NRZrCuH4X:2Rbnr0TJ15XIVbS9igb95Y");
+
+xhr.send(data);

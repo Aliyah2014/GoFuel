@@ -67,3 +67,12 @@ xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("authorization", "apikey 7MWEgB0tzpb27NRZrCuH4X:2Rbnr0TJ15XIVbS9igb95Y");
 
 xhr.send(data);
+
+// API autocomplete for search bar
+// var apikey = 'HERE-e77eb534-79d2-43c3-aa17-373893adb761'
+
+// https://autocomplete.geocoder.ls.hereapi.com/6.2/suggest.json
+// ?apiKey={'HERE-e77eb534-79d2-43c3-aa17-373893adb761'}
+// &query=Pariser+1+Berl
+// &beginHighlight=<b>
+// &endHighlight=</b>

@@ -1,6 +1,11 @@
 // DOM variables
 var fuelCard = $('#fuelCard');
 
+var fuelCard = $('#fuelCard');
+var zipCodeInput = $('#zip-code-input');
+var submitZipCode = $('#submit-zip-code');
+
+
 // Fuel Price Generator Function
 var regular = 3;
 var diesel = 4;
@@ -80,15 +85,3 @@ map.on('load', function () {
 // xhr.setRequestHeader("authorization", "apikey 7MWEgB0tzpb27NRZrCuH4X:2Rbnr0TJ15XIVbS9igb95Y");
 
 // xhr.send(data);
-
-<<<<<<< HEAD
-// API autocomplete for search bar
-// var apikey = 'HERE-e77eb534-79d2-43c3-aa17-373893adb761'
-
-// https://autocomplete.geocoder.ls.hereapi.com/6.2/suggest.json
-// ?apiKey={'HERE-e77eb534-79d2-43c3-aa17-373893adb761'}
-// &query=Pariser+1+Berl
-// &beginHighlight=<b>
-// &endHighlight=</b>
-=======
->>>>>>> 643f34e6bd72c0445c552500624eef764a7e115c

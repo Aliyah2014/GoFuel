@@ -1,0 +1,2 @@
+var NERL_KEY = 'eKMurs1hHp7S5Oh7EMU9Ga1RWuxJrqCCJgSXKe5S';
+var MAPBOX_KEY = 'pk.eyJ1IjoiZGFuc2hhZmkiLCJhIjoiY2xkbjkzZ3pyMDBuYTNxcnZ0Znp5NDNzaCJ9.E66gFZiJwvhFeV1JdvGKag';

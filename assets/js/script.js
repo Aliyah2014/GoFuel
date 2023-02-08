@@ -19,6 +19,10 @@ function generateDieselPrice() {
   return `$${diesel}.${randomisePrice(randomCentsTwo)}`;
 };
 
+submitZipCode.click(function() {
+  var userPostalCode = zipCodeInput.val();
+  var NERL_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=2&api_key=${NERL_KEY}`;
+
 // API call to NERL fuel
 var userPostalCode = '80210';
 var NERL_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=5&api_key=${NERL_KEY}`;
@@ -77,6 +81,7 @@ map.on('load', function () {
 
 // xhr.send(data);
 
+<<<<<<< HEAD
 // API autocomplete for search bar
 // var apikey = 'HERE-e77eb534-79d2-43c3-aa17-373893adb761'
 
@@ -85,3 +90,5 @@ map.on('load', function () {
 // &query=Pariser+1+Berl
 // &beginHighlight=<b>
 // &endHighlight=</b>
+=======
+>>>>>>> 643f34e6bd72c0445c552500624eef764a7e115c

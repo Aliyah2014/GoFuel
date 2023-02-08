@@ -1,7 +1,5 @@
 // DOM variables
 var fuelCard = $('#fuelCard');
-
-var fuelCard = $('#fuelCard');
 var zipCodeInput = $('#zip-code-input');
 var submitZipCode = $('#submit-zip-code');
 
@@ -26,32 +24,29 @@ function generateDieselPrice() {
 
 submitZipCode.click(function() {
   var userPostalCode = zipCodeInput.val();
-  var NERL_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=2&api_key=${NERL_KEY}`;
+  var NERL_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=5&api_key=${NERL_KEY}`;
 
-// API call to NERL fuel
-var userPostalCode = '80210';
-var NERL_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=5&api_key=${NERL_KEY}`;
+  $.ajax({
+    url: NERL_URL,
+    method: "GET"
+  }).then(function(response) {
+    console.log(response);
+    for (var i = 0; i < response.fuel_stations.length; i++) {
+      var stationName = response.fuel_stations[i].station_name;
+      var stationAdd = response.fuel_stations[i].street_address;
+      var stationZip = response.fuel_stations[i].zip;
 
-$.ajax({
-  url: NERL_URL,
-  method: "GET"
-}).then(function(response) {
-  console.log(response);
-  for (var i = 0; i < response.fuel_stations.length; i++) {
-    var stationName = response.fuel_stations[i].station_name;
-    var stationAdd = response.fuel_stations[i].street_address;
-    var stationZip = response.fuel_stations[i].zip;
+      var fuelCardBody = $(`
+                          <div class="fuelCard">
+                            <p>${stationName}</p>
+                            <p>${stationAdd}, ${stationZip}</p>
+                            <p>Regular: $${generateRegularPrice()} - Diesel: ${generateDieselPrice()}</p>
+                          </div>
+                        `);
 
-    var fuelCardBody = $(`
-                        <div class="fuelCard">
-                          <p>${stationName}</p>
-                          <p>${stationAdd}, ${stationZip}</p>
-                          <p>Regular: $${generateRegularPrice()} - Diesel: ${generateDieselPrice()}</p>
-                        </div>
-                      `);
-
-    fuelCard.append(fuelCardBody);
-  };
+      fuelCard.append(fuelCardBody);
+    };
+  });
 });
 
 // MAPBOX

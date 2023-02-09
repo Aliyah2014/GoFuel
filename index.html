@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
   <title>GoFuel</title>
@@ -13,13 +16,27 @@
 
 <body>
   <!-- Navbar-->
-  <nav class="navbar navbar-light">
-    <span id= "unico" class="navbar-brand mb-0 h1">Go Fuel</span>
-    <ul id="navList">
-      <li>
-        <a href="article.html">Saving Fuel Tips </a>
-      </li>
-    </ul>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" id="unico" href="#">GoFuel <img id="water-drop" src="/assets/images/droplet-128.png" alt="water-drop"/></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span id="burger-icon" class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul id="nav-links" class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="article.html">Fuel Tips</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="article.html">Average US Prices</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="article.html">Report A Price</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="article.html">Contact</a>
+        </li>
+      </ul>
+    </div>
   </nav>
   <!-- End Of Navbar -->
 
@@ -38,9 +55,10 @@
     </section>
 
     <section id="map-area">
+      <div class="col-12" id="static-map"></div>
       <div class="row">
-        <div class="col-8" id="map"></div>
-        <div class="col-4" id="stations">
+        <div class="col" id="map"></div>
+        <div class="col-sm-4" id="stations">
           <!-- Added via jQuery in script.js -->
           <div id="fuelCard"></div>
         </div>
@@ -48,13 +66,6 @@
     </section>
   </main>
   <!-- end Mapbox -->
-
-  <!-- footer -->
-  <div class="text-center p-3 bg-success fixed-bottom">
-    <a class="text-white" href="https://mdbootstrap.com/">© 2020: Go Fuel</a>
-  </div>
-  <!-- End of footer -->
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
   <script src="/assets/js/keys.js"></script>

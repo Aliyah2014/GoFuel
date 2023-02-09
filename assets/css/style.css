@@ -1,3 +1,4 @@
+/* Global */
 main {
   display: flex;
   align-items: center;
@@ -7,18 +8,22 @@ main {
   font-family: 'Work Sans', sans-serif;
 }
 
+/* Navbar */
+
 nav {
   background-color: #000000;
+}
+
+#unico{
+  font-family: 'Dela Gothic One', cursive;
+  font-size: 50px;
+  color: white;
 }
 
 #nav-links {
   font-family: 'Work Sans', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
-}
-
-#burger-icon {
-  color: white;
 }
 
 #water-drop {
@@ -37,7 +42,7 @@ nav {
   text-align: center;
 }
 
-.go-btn {
+.search-btn {
   width: 100%;
   height: 50px;
   border: none;
@@ -45,8 +50,18 @@ nav {
   color: white;
 }
 
+.search-btn:hover {
+  color: rgb(193, 193, 193);
+}
+
+/* Map Area */
+
 #map-area {
   border: 1px solid black;
+}
+
+#static-map {
+  height: 70vh;
 }
 
 #map {
@@ -69,26 +84,8 @@ nav {
   font-weight: bolder;
 }
 
-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  height: 86vh;
-}
-
-#unico{
-  font-family: 'Dela Gothic One', cursive;
-  font-size: 50px;
-  color: white;
-}
-
 h4 {
   text-align: center;
-}
-
-.text-footer {
-  color: #f7f8ed;
 }
 
 /* Article page styling */

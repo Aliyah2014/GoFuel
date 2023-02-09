@@ -2,6 +2,7 @@
 var fuelCard = $('#fuelCard');
 var zipCodeInput = $('#zip-code-input');
 var submitZipCode = $('#submit-zip-code');
+var staticMapDiv = $('#static-map');
 
 // Fuel price variables and price calculator
 var regular = 3;
@@ -29,16 +30,19 @@ mapboxgl.accessToken = MAPBOX_KEY;
 var staticMap = new mapboxgl.Map({
   container: 'static-map', // container ID
   style: 'mapbox://styles/mapbox/streets-v12', // style URL
-  center: [-77.0364, 8.8951],
-  zoom: 3, // starting zoom
+  center: [-96.990593, 38.740121],
+  zoom: 3.8, // starting zoom
 });
 
 staticMap.on('load', function () {
   staticMap.resize();
 });
 
-// API call to NREL for Fuel Station Data
+// API call to NREL for Fuel Station Data upon click and loading of Mapbox
 submitZipCode.click(function() {
+
+  $(staticMapDiv).hide();
+
   var userPostalCode = zipCodeInput.val();
   var NERL_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=6&api_key=${NERL_KEY}`;
   var ZIPCODES_URL = `https://thezipcodes.com/api/v1/search?zipCode=${userPostalCode}&countryCode=US&apiKey=${ZIPCODE_KEY}`;
@@ -47,7 +51,6 @@ submitZipCode.click(function() {
     url: NERL_URL,
     method: "GET"
   }).then(function(response) {
-    console.log(response);
     for (var i = 0; i < response.fuel_stations.length; i++) {
       var stationName = response.fuel_stations[i].station_name;
       var stationAdd = response.fuel_stations[i].street_address;
@@ -72,7 +75,6 @@ submitZipCode.click(function() {
     url: ZIPCODES_URL,
     method: "GET"
   }).then(function(response) {
-    console.log(response);
     mapboxgl.accessToken = MAPBOX_KEY;
 
     // Mapbox Integration
@@ -89,29 +91,7 @@ submitZipCode.click(function() {
   });
 });
 
-
-
-
-
-//Function to store input data in local storage
-// var input = document.getElementById('saveServer').value;
+// //Function to store input data in local storage
+// var input = zipCodeInput.value;
 // localStorage.setItem('server', input);
-// document.getElementById('saveServer').value = localStorage.getItem('server');
-
-// // API call to get USA Gas prices
-// var data = null;
-
-// var xhr = new XMLHttpRequest();
-// xhr.withCredentials = false;
-
-// xhr.addEventListener("readystatechange", function () {
-//   if (this.readyState === this.DONE) {
-//     console.log(this.responseText);
-//   }
-// });
-
-// xhr.open("GET", "https://api.collectapi.com/gasPrice/stateUsaPrice?state=WA");
-// xhr.setRequestHeader("content-type", "application/json");
-// xhr.setRequestHeader("authorization", "apikey 7MWEgB0tzpb27NRZrCuH4X:2Rbnr0TJ15XIVbS9igb95Y");
-
-// xhr.send(data);
+// zipCodeInput.value = localStorage.getItem('server');

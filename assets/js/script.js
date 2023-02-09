@@ -11,12 +11,6 @@ var diesel = 4;
 var randomCentsOne =  Math.floor(Math.random() * (999 - 001 + 1) + 001);
 var randomCentsTwo =  Math.floor(Math.random() * (999 - 001 + 1) + 001);
 
-$('a').click( function(e) {
-  e.preventDefault();
-  window.location.reload();
-  return false;
-});
-
 // Function that randomises price when called in loop
 function randomisePrice(price) {
   return Math.floor(Math.random() * price + 1);

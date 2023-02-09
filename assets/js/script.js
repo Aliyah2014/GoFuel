@@ -3,12 +3,19 @@ var fuelCard = $('#fuelCard');
 var zipCodeInput = $('#zip-code-input');
 var submitZipCode = $('#submit-zip-code');
 var staticMapDiv = $('#static-map');
+var navLogo = $('#unico');
 
 // Fuel price variables and price calculator
 var regular = 3;
 var diesel = 4;
 var randomCentsOne =  Math.floor(Math.random() * (999 - 001 + 1) + 001);
 var randomCentsTwo =  Math.floor(Math.random() * (999 - 001 + 1) + 001);
+
+$('a').click( function(e) {
+  e.preventDefault();
+  window.location.reload();
+  return false;
+});
 
 // Function that randomises price when called in loop
 function randomisePrice(price) {
@@ -42,6 +49,8 @@ staticMap.on('load', function () {
 submitZipCode.click(function() {
 
   $(staticMapDiv).hide();
+  // Ensure fuelCard section is cleared before re-load of next ZIP code
+  fuelCard.empty();
 
   var userPostalCode = zipCodeInput.val();
   var NERL_URL = `https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?location=${userPostalCode}&limit=6&api_key=${NERL_KEY}`;
@@ -67,8 +76,6 @@ submitZipCode.click(function() {
       fuelCard.append(fuelCardBody);
     };
   });
-  // Ensure fuelCard section is cleared before re-load of next ZIP code
-  fuelCard.empty();
 
   // API call to reverse geocode postcode for lat/long on Mapbox
   $.ajax({
@@ -81,9 +88,20 @@ submitZipCode.click(function() {
     var map = new mapboxgl.Map({
       container: 'map', // container ID
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
-      center: [parseInt(response.location[0].longitude), parseInt(response.location[0].latitude)],
-      zoom: 9, // starting zoom
+      center: [response.location[0].longitude, response.location[0].latitude],
+      zoom: 14, // starting zoom
     });
+
+    var popup = new mapboxgl.Popup({ offset: 25 }).setText(
+      `${$('.stn-name').html()}`
+    );
+
+    // Create a new marker
+    var marker = new mapboxgl.Marker({
+    color: "#000"
+    }).setLngLat([response.location[0].longitude, response.location[0].latitude])
+      .setPopup(popup)
+      .addTo(map);
 
     map.on('load', function () {
       map.resize();

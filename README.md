@@ -4,16 +4,14 @@
 
 As a driver I want to find the cheapest petrol station to save money in uncertain times.This web application makes it easy for people to review different options and identify the best price that is available to save money.
 
-(provide deployed link of the Application)
-- What did you learn?
+https://aliyah2014.github.io/GoFuel/ 
 
 ## Usage
 
-Users can input their postal code, then they are provided with options of different fuel stations near them.(Add more details for routes shown via google maps.)
+Users can input their postal code, then they are provided with options of different fuel stations near them. The Application Programming Interface used in this application are Mapbox and 
+Nerl keys.
 
-(insert images of how to use the app once complete)
-
-![alt text](assets/images/screenshot.png)
+![alt image](/assets/images/application.png)
 
 ## Credits
 

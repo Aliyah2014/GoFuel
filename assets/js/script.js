@@ -109,7 +109,25 @@ submitZipCode.click(function() {
   });
 });
 
-// //Function to store input data in local storage
-// var input = zipCodeInput.value;
-// localStorage.setItem('server', input);
-// zipCodeInput.value = localStorage.getItem('server');
+//Function to store input data in local storage
+
+const zipCodeInput = document.getElementById("zip-code-input");
+const submitZipCodeButton = document.getElementById("submit-zip-code");
+
+submitZipCodeButton.addEventListener("click", function() {
+  // Get the value of the zip code input
+  const zipCode = zipCodeInput.value;
+
+  // Store the zip code in local storage
+  localStorage.setItem("zipCode", zipCode);
+});
+
+// Get the zip code from local storage 
+const storedZipCode = localStorage.getItem("zipCode");
+
+// If there is a stored zip code, set the value of the zip code input to the stored zip code
+if (storedZipCode) {
+  zipCodeInput.value = storedZipCode;
+}
+
+

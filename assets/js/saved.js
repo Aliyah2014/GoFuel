@@ -1,7 +1,7 @@
 // DOM query selectors
 var savedSearches = document.querySelector("#saved-searches");
 var clearBtn = document.querySelector("#clear");
-var savedZips = JSON.parse(localStorage.getItem("zipcode")) || [];
+var savedZips = JSON.parse(localStorage.getItem("zipCode")) || [];
 
 // Clears localStorage and highscores
 clearBtn.addEventListener('click', function() {
